@@ -1,5 +1,6 @@
 body {
   background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  background-repeat: no-repeat;
 }
 button {
   cursor: pointer;
@@ -14,6 +15,7 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 110vh;
 }
 .questionWrapper, .tryAgainWrapper {
   display: flex;
@@ -21,7 +23,7 @@ button {
   align-items: center;
 }
 .questionImage {
-  width: 400px;
+  max-width: 350px;
   height: 500px;
   object-fit: cover;
 }
@@ -33,12 +35,14 @@ button {
   grid-template-rows: 49% 49%;
 }
 .variantButton {
-  min-width: 200px;
+  min-width: 180px;
+  max-width: 200px;
   min-height: 50px;
   background-color: darkseagreen;
 }
 h3 {
   color: azure;
+  text-align: center;
 }
 
 
