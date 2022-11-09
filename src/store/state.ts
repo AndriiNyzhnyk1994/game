@@ -78,10 +78,10 @@ export const gameState = {
             id: 7,
             photo: tom,
             variants: [
-                {title: 'Л.П. (Тобi Магуайр)', isCorrect: false},
-                {title: 'Л.П. (Ендрю Гарфiлд)', isCorrect: false},
-                {title: 'Л.П. (Том Холланд)', isCorrect: true},
-                {title: 'Л.П. (Деннi Сiгрен)', isCorrect: false},
+                {title: 'Тобi Магуайр', isCorrect: false},
+                {title: 'Ендрю Гарфiлд', isCorrect: false},
+                {title: 'Том Холланд', isCorrect: true},
+                {title: 'Деннi Сiгрен', isCorrect: false},
             ]
         },
         {

@@ -15,7 +15,7 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 110vh;
+  text-align: center;
 }
 .questionWrapper, .tryAgainWrapper {
   display: flex;
@@ -47,8 +47,9 @@ h3 {
 
 
 button:hover {
+
   background-color: rgba(166,195,163,1);
-  font-size: 18px;
+  font-size: 19px;
 }
 button:active {
   background-color: grey;
