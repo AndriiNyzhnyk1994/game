@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useCallback} from 'react';
+import './App.css'
+import {onAnswerAC, OnAnswerActionType, QuestionType, tryAgainAC, TryAgainActionType} from './store/reducer';
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "./store/redux-store";
+import Question from "./Question/Question";
+import TryAgain from "./TryAgain";
 
-function App() {
+
+const App = () => {
+  const count = useSelector<AppRootStateType, number>(state => state.reducer.count)
+  const trueAnswersCount = useSelector<AppRootStateType, number>(state => state.reducer.trueAnswersCount)
+  const questions = useSelector<AppRootStateType, Array<QuestionType>>(state => state.reducer.questions)
+  const dispatch = useDispatch();
+
+
+  const onAnswer = useCallback((questionId: number, isCorrect: boolean) => {
+    const action: OnAnswerActionType = onAnswerAC(questionId, isCorrect)
+    dispatch(action)
+  }, [dispatch])
+
+  const tryAgain = useCallback(() => {
+    const action: TryAgainActionType = tryAgainAC()
+    dispatch(action)
+  }, [dispatch])
+
+  const getRandomQuestion = () => {
+    return questions[Math.floor(Math.random() * questions.length)]
+  }
+  let randomQuestion: QuestionType = getRandomQuestion();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className={'App'}>
+        {questions.length
+            ? <Question
+                count={count}
+                randomQuestion={randomQuestion}
+                onAnswer={onAnswer}
+            />
+            : <TryAgain
+                count={count}
+                trueAnswersCount={trueAnswersCount}
+                tryAgain={tryAgain}
+            />
+        }
+      </div>
   );
-}
+};
 
 export default App;
